@@ -138,9 +138,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 10822050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c9311943f1d14bf793895fd9ad0157d, type: 3}
+  m_Script: {fileID: 11500000, guid: a14f003c13b204c6e8411447d30cc3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xDirection: 0
+  yDirection: 0
+  xVector: 0
+  yVector: 0
+  xSpeed: 0
+  ySpeed: 0
+  inCave: 1
 --- !u!1 &934382336
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +164,7 @@ GameObject:
   - component: {fileID: 934382338}
   m_Layer: 0
   m_Name: Collision
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
