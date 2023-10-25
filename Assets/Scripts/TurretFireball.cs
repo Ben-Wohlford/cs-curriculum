@@ -1,4 +1,7 @@
+using System;
 using UnityEngine;
+using UnityEngine.XR;
+
 public class TurretFireball : MonoBehaviour
 {
     public UnityEngine.Vector3 target;
@@ -19,11 +22,11 @@ public class TurretFireball : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            
+            Destroy(this.gameObject);
         }
         if (target != null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, 0.001f);
+            transform.position = Vector3.MoveTowards(transform.position, target, 0.01f);
         }
     }
 }

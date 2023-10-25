@@ -5,6 +5,7 @@ public class Turret : MonoBehaviour
     private Collider2D target;
     private float originalFireDelay;
     private float fireDelay;
+    Vector3 ySpawnPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,9 @@ public class Turret : MonoBehaviour
             if (fireDelay < 0)
             {
                 //create projectile
-                Instantiate(fireball, transform.position, transform.rotation);
+                ySpawnPos = transform.position;
+                ySpawnPos.y += 1;
+                Instantiate(fireball, ySpawnPos, transform.rotation);
                 //timer
                 fireDelay = originalFireDelay;
             }
@@ -40,6 +43,7 @@ public class Turret : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             target = null;
+            fireDelay = originalFireDelay;
             Debug.Log("not targeting");
         }
     }
