@@ -8,9 +8,11 @@ public class TurretFireball : MonoBehaviour
     private float timer;
     private float originalTimer;
     private GameObject player;
+    private HUD hud;
     // Start is called before the first frame update
     void Start()
     {
+        hud = GameObject.FindObjectOfType<HUD>();
         player = GameObject.FindWithTag("Player");
         originalTimer = 6;
         timer = originalTimer;
@@ -27,6 +29,14 @@ public class TurretFireball : MonoBehaviour
         if (target != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, 0.01f);
+        }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(this.gameObject);
+            hud.health -= 3;
         }
     }
 }

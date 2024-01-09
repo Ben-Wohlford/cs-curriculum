@@ -30,6 +30,10 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
         healthText.text = "Health: " + health;
         coinText.text = "Coins: " + coins;
     }

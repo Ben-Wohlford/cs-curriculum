@@ -12,6 +12,7 @@ TagManager:
   - GreaterHealth
   - Ground
   - TurretProjectile
+  - PlayerProjectile
   layers:
   - Default
   - TransparentFX

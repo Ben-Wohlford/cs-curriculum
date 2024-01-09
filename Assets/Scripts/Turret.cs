@@ -5,29 +5,25 @@ public class Turret : MonoBehaviour
     private Collider2D target;
     private float originalFireDelay;
     private float fireDelay;
-    Vector3 ySpawnPos;
+    Vector3 spawnPos;
     // Start is called before the first frame update
     void Start()
     {
         originalFireDelay = 2f;
-        fireDelay = originalFireDelay;
+        fireDelay = 0;
     }
     // Update is called once per frame
     void Update()
     {
-        if (target != null)
+        fireDelay -= Time.deltaTime;
+        if ((target != null) && (fireDelay < 0))
         {
-            Debug.Log("t");
-            fireDelay -= Time.deltaTime;
-            if (fireDelay < 0)
-            {
-                //create projectile
-                ySpawnPos = transform.position;
-                ySpawnPos.y += 1;
-                Instantiate(fireball, ySpawnPos, transform.rotation);
-                //timer
-                fireDelay = originalFireDelay;
-            }
+            //create projectile
+            spawnPos = transform.position;
+            spawnPos.y += 1;
+            Instantiate(fireball, spawnPos, transform.rotation);
+            //timer
+            fireDelay = originalFireDelay;
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
