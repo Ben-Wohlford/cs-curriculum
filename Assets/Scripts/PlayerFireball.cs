@@ -1,17 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-public class TurretFireball : MonoBehaviour
+
+public class PlayerFirebal : MonoBehaviour
 {
-    public UnityEngine.Vector3 target;
+    private Vector3 target;
     private float timer;
-    private GameObject player;
-    private HUD hud;
+    private GameObject enemy;
     // Start is called before the first frame update
     void Start()
     {
-        hud = GameObject.FindObjectOfType<HUD>();
-        player = GameObject.FindWithTag("Player");
-        timer = 5;
-        target = player.transform.position;
+        enemy = GameObject.FindWithTag("Enemy");
+        timer = 7;
+        target = enemy.transform.position;
     }
     // Update is called once per frame
     void Update()
@@ -28,10 +29,9 @@ public class TurretFireball : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             Destroy(this.gameObject);
-            hud.health -= 3;
         }
     }
 }

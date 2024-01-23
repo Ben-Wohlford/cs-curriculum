@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4668079526467658351}
   - component: {fileID: 2399072710900510365}
   - component: {fileID: 1996527365673187554}
+  - component: {fileID: -1552250998290102863}
   m_Layer: 0
   m_Name: MobileEnemy
   m_TagString: Enemy
@@ -106,6 +107,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-1552250998290102863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3736838050167469039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33709d14800034edcacca3d8d552b35e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axe: {fileID: 8928701524657299959, guid: 2d2bc4cf5fda5c740b9cedcdbc7c87ac, type: 3}
+  coin: {fileID: 3462362578362087066, guid: 69c7343f050914c7787bbbe42c07b5b8, type: 3}
+  lesserHealth: {fileID: 1754680589071845549, guid: 20d835637be124fa19ee5aba32b598de,
+    type: 3}
+  greaterHealth: {fileID: 2097457319023854806, guid: e091de0f97e1a4e5a8b31fe26e17859f,
+    type: 3}
+  axeEnemy: 0
 --- !u!1 &6074370204116875197
 GameObject:
   m_ObjectHideFlags: 0
