@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    private Rigidbody2D playerRB;
+    private HUD hud;
+    private Rigidbody2D playerRb;
     public float xDirection;
     public float yDirection;
     public float xVector;
@@ -17,7 +18,7 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerRB = GetComponent<Rigidbody2D>();
+        playerRb = GetComponent<Rigidbody2D>();
         if (!inCave)
         {
             ySpeed = 4;
@@ -43,7 +44,7 @@ public class PlayerMove : MonoBehaviour
         {
             if (grounded && yDirection > 0)
             {
-                playerRB.AddForce(transform.up * jumpForce);
+                playerRb.AddForce(transform.up * jumpForce);
             }
         }
         transform.position = transform.position + new Vector3(xVector, yVector, 0);
@@ -53,6 +54,10 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             grounded = true;
+        }
+        if (other.gameObject.CompareTag("Door") && hud.axe)
+        {
+            Destroy(other.gameObject);
         }
     }
     private void OnCollisionExit2D(Collision2D other)

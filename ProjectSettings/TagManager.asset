@@ -13,6 +13,7 @@ TagManager:
   - Ground
   - TurretProjectile
   - PlayerProjectile
+  - Door
   layers:
   - Default
   - TransparentFX

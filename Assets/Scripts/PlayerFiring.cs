@@ -7,7 +7,7 @@ public class PlayerFiring : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        originalFireDelay = 1.5f;
+        originalFireDelay = 0.75f;
         fireDelay = 0;
     }
 

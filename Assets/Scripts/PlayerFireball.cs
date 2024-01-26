@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFirebal : MonoBehaviour
+public class PlayerFireball : MonoBehaviour
 {
     private Vector3 target;
     private float timer;
