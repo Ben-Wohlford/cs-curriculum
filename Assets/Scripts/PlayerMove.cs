@@ -6,6 +6,9 @@ public class PlayerMove : MonoBehaviour
 {
     private HUD hud;
     private Rigidbody2D playerRb;
+    private Collider2D playerCollider;
+    private float rayCastOrigin;
+    private float rayCastDistance;
     public float xDirection;
     public float yDirection;
     public float xVector;
@@ -19,6 +22,12 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        playerCollider = gameObject.GetComponent<Collider2D>();
+        Debug.Log(transform.position);
+        Debug.Log(playerCollider.bounds.center);
+        Debug.Log(transform.position.y-playerCollider.bounds.extents.y);
+        Debug.Log(playerCollider.bounds.min.y);
+        rayCastDistance = 1;
         if (!inCave)
         {
             ySpeed = 4;
@@ -46,6 +55,15 @@ public class PlayerMove : MonoBehaviour
             {
                 playerRb.AddForce(transform.up * jumpForce);
             }
+            RaycastHit2D hit = Physics2D.Raycast(transform.position - playerCollider.bounds.extents, -Vector2.up, rayCastDistance);
+            if (hit.collider)
+            {
+                //Debug.Log("grounded "+hit.collider.tag);
+            }
+            else
+            {
+                //Debug.Log("not grounded");
+            }
         }
         transform.position = transform.position + new Vector3(xVector, yVector, 0);
     }
@@ -57,6 +75,7 @@ public class PlayerMove : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Door") && hud.axe)
         {
+            Debug.Log("door");
             Destroy(other.gameObject);
         }
     }

@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 532849915}
   - component: {fileID: 532849914}
   - component: {fileID: 532849913}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collision
   m_TagString: Ground
   m_Icon: {fileID: 0}
