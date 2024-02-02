@@ -4,7 +4,6 @@ using UnityEngine;
 public class HUD : MonoBehaviour
 {
     public static HUD hud;
-    public bool axe;
     public int coins;
     public int health;
     public int maxHealth;
@@ -25,7 +24,6 @@ public class HUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        axe = false;
         maxHealth = 10;
         coins = 0;
         health = maxHealth;

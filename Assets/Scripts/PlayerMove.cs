@@ -6,9 +6,6 @@ public class PlayerMove : MonoBehaviour
 {
     private HUD hud;
     private Rigidbody2D playerRb;
-    private Collider2D playerCollider;
-    private float rayCastOrigin;
-    private float rayCastDistance;
     public float xDirection;
     public float yDirection;
     public float xVector;
@@ -18,16 +15,12 @@ public class PlayerMove : MonoBehaviour
     private float jumpForce;
     private bool grounded;
     public bool inCave;
+    private bool hasAxe;
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-        playerCollider = gameObject.GetComponent<Collider2D>();
-        Debug.Log(transform.position);
-        Debug.Log(playerCollider.bounds.center);
-        Debug.Log(transform.position.y-playerCollider.bounds.extents.y);
-        Debug.Log(playerCollider.bounds.min.y);
-        rayCastDistance = 1;
+        hasAxe = false;
         if (!inCave)
         {
             ySpeed = 4;
@@ -35,7 +28,7 @@ public class PlayerMove : MonoBehaviour
 
         if (inCave)
         {
-            jumpForce = 9;
+            jumpForce = 6;
         }
         xSpeed = 4;
     }
@@ -55,25 +48,34 @@ public class PlayerMove : MonoBehaviour
             {
                 playerRb.AddForce(transform.up * jumpForce);
             }
-            RaycastHit2D hit = Physics2D.Raycast(transform.position - playerCollider.bounds.extents, -Vector2.up, rayCastDistance);
-            if (hit.collider)
+            grounded = Physics2D.Raycast(transform.position, Vector2.down, .75f);
+            if (!grounded)
             {
-                //Debug.Log("grounded "+hit.collider.tag);
-            }
-            else
-            {
-                //Debug.Log("not grounded");
+                Debug.Log("ng");
             }
         }
-        transform.position = transform.position + new Vector3(xVector, yVector, 0);
+        transform.position+= new Vector3(xVector, yVector, 0);
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Axe"))
+        {
+            Destroy(other.gameObject);
+            hasAxe = true;
+        }
+
+        if (other.gameObject.CompareTag("Door"))
+        {
+            Destroy(other.gameObject);
+        }
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        //if (other.gameObject.CompareTag("Ground"))
         {
-            grounded = true;
+            //grounded = true;
         }
-        if (other.gameObject.CompareTag("Door") && hud.axe)
+        if (other.gameObject.CompareTag("Door") && hasAxe)
         {
             Debug.Log("door");
             Destroy(other.gameObject);
@@ -81,9 +83,9 @@ public class PlayerMove : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        //if (other.gameObject.CompareTag("Ground"))
         {
-            grounded = false;
+            //grounded = false;
         }
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4281486416091757578}
   - component: {fileID: -6860645675849695067}
   - component: {fileID: 4173591401400364819}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player_Fireball
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3993588002912018415}
   - component: {fileID: 5999566823160469980}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FireballDetect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

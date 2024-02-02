@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2722345964872893037}
   - component: {fileID: 1680973113267072696}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GreaterHealth
   m_TagString: GreaterHealth
   m_Icon: {fileID: 0}

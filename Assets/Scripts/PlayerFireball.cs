@@ -1,16 +1,40 @@
+using System;
 using UnityEngine;
 
 public class PlayerFireball : MonoBehaviour
 {
     private Vector3 target;
     private float timer;
-    private GameObject enemy;
+    private GameObject[] enemies;
+    private GameObject closest;
+    private float distance;
+    private Vector3 position;
+    private Vector3 difference;
+    private float currentDistance;
     // Start is called before the first frame update
     void Start()
     {
-        enemy = GameObject.FindWithTag("Enemy");
         timer = 7;
-        target = enemy.transform.position;
+        FindClosestEnemy();
+        target = closest.transform.position;
+    }
+    GameObject FindClosestEnemy()
+    {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        closest = null;
+        distance = 1000000;
+        position = transform.position;
+        foreach (GameObject enemy in enemies)
+        {
+            difference = enemy.transform.position - position;
+            currentDistance = difference.sqrMagnitude;
+            if (currentDistance < distance)
+            {
+                closest = enemy;
+                distance = currentDistance;
+            }
+        }
+        return closest;
     }
     // Update is called once per frame
     void Update()
