@@ -28,7 +28,7 @@ public class PlayerMove : MonoBehaviour
 
         if (inCave)
         {
-            jumpForce = 6;
+            jumpForce = 5.5f;
         }
         xSpeed = 4;
     }
@@ -63,7 +63,6 @@ public class PlayerMove : MonoBehaviour
             Destroy(other.gameObject);
             hasAxe = true;
         }
-
         if (other.gameObject.CompareTag("Door"))
         {
             Destroy(other.gameObject);
@@ -71,21 +70,10 @@ public class PlayerMove : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        //if (other.gameObject.CompareTag("Ground"))
-        {
-            //grounded = true;
-        }
         if (other.gameObject.CompareTag("Door") && hasAxe)
         {
             Debug.Log("door");
             Destroy(other.gameObject);
-        }
-    }
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        //if (other.gameObject.CompareTag("Ground"))
-        {
-            //grounded = false;
         }
     }
 }
