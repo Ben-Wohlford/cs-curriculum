@@ -32,8 +32,6 @@ public class HealthManager : MonoBehaviour
         if (other.gameObject.CompareTag("Spikes"))
         {
             ChangeHealth(2);
-            //Find a way to add knockback; might need to find x and/or y of spikes so I know where to knockback
-            //Test that
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
     private bool grounded;
     public bool inCave;
     private bool hasAxe;
+    private bool hasKey;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +64,11 @@ public class PlayerMove : MonoBehaviour
             Destroy(other.gameObject);
             hasAxe = true;
         }
+        if (other.gameObject.CompareTag("Key"))
+        {
+            Destroy(other.gameObject);
+            hasKey = true;
+        }
         if (other.gameObject.CompareTag("Door"))
         {
             Destroy(other.gameObject);
@@ -72,7 +78,10 @@ public class PlayerMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Door") && hasAxe)
         {
-            Debug.Log("door");
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("Door1") && hasKey)
+        {
             Destroy(other.gameObject);
         }
     }

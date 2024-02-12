@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 public class TurretFireball : MonoBehaviour
 {
@@ -26,6 +27,13 @@ public class TurretFireball : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target, 0.01f);
         }
     }
+    private void OnCollisionEnter2D(Collision2D other)
+   {
+        if (other.gameObject.CompareTag("Ground"))
+       {
+            Destroy(this.gameObject);
+       }
+   }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
