@@ -1,11 +1,13 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using Debug = System.Diagnostics.Debug;
 
 public class PlayerMove : MonoBehaviour
 {
     private HUD hud;
     private Rigidbody2D playerRb;
+    private Transform onPlatform;
     public float xDirection;
     public float yDirection;
     public float xVector;
@@ -17,6 +19,9 @@ public class PlayerMove : MonoBehaviour
     public bool inCave;
     private bool hasAxe;
     private bool hasKey;
+    private float platformXVector;
+    private float platformYVector;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +38,13 @@ public class PlayerMove : MonoBehaviour
         }
         xSpeed = 4;
     }
+    
     // Update is called once per frame
     void Update()
     {
         xDirection = Input.GetAxis("Horizontal");
         yDirection = Input.GetAxis("Vertical");
+        //Moving
         xVector = xDirection * xSpeed * Time.deltaTime;
         if (!inCave)
         {
@@ -45,18 +52,34 @@ public class PlayerMove : MonoBehaviour
         }
         if (inCave)
         {
+            //Jumping
             if (grounded && yDirection > 0)
             {
                 playerRb.AddForce(transform.up * jumpForce);
             }
             grounded = Physics2D.Raycast(transform.position, Vector2.down, .75f);
-            if (!grounded)
+            //Moving platforms
+            RaycastHit2D onPlatform = Physics2D.Raycast(transform.position, Vector2.down, .75f);
+            if (onPlatform.collider != null)
             {
-                Debug.Log("ng");
+                if (onPlatform.transform.CompareTag("MovingPlatform"))
+                {
+                    transform.SetParent(onPlatform.transform);
+                }
+                else
+                {
+                    transform.SetParent(null);
+                }
+            }
+            else
+            {
+                transform.SetParent(null);
             }
         }
-        transform.position+= new Vector3(xVector, yVector, 0);
+        //Movement
+        transform.position += new Vector3(xVector, yVector, 0);
     }
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Axe"))
@@ -74,6 +97,7 @@ public class PlayerMove : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Door") && hasAxe)

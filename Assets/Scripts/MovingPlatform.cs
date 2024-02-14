@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     public float originalTimer;
     private float timer;
     public float xSpeed;
-    private float xVector;
+    public float xVector;
     public float ySpeed;
-    private float yVector;
+    public float yVector;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +27,6 @@ public class MovingPlatform : MonoBehaviour
         }
         xVector = xSpeed * Time.deltaTime;
         yVector = ySpeed * Time.deltaTime;
+        transform.position += new Vector3(xVector, yVector, 0);
     }
 }

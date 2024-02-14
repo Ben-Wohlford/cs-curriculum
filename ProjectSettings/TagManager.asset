@@ -17,6 +17,7 @@ TagManager:
   - doorNoCollision
   - Door1
   - Key
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
