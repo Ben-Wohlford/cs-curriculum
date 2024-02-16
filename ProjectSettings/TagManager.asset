@@ -18,6 +18,7 @@ TagManager:
   - Door1
   - Key
   - MovingPlatform
+  - Switch
   layers:
   - Default
   - TransparentFX

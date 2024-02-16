@@ -31,7 +31,11 @@ public class HealthManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Spikes"))
         {
-            ChangeHealth(2);
+            ChangeHealth(1);
+        }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            ChangeHealth(3);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

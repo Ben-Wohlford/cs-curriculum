@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+
 public class MovingPlatform : MonoBehaviour
 {
+    public bool needsSwitch;
+    private SwitchOn switchOn;
     public float originalTimer;
     private float timer;
     public float xSpeed;
@@ -14,19 +18,39 @@ public class MovingPlatform : MonoBehaviour
     void Start()
     {
         timer = originalTimer;
+        switchOn = GameObject.FindGameObjectWithTag("Player").GetComponent<SwitchOn>();
     }
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer < 0)
+        if (needsSwitch)
         {
-            timer = originalTimer;
-            xSpeed = -xSpeed;
-            ySpeed = -ySpeed;
+            if (switchOn.on)
+            {
+                timer -= Time.deltaTime;
+                if (timer < 0)
+                {
+                    timer = originalTimer;
+                    xSpeed = -xSpeed;
+                    ySpeed = -ySpeed;
+                }
+                xVector = xSpeed * Time.deltaTime;
+                yVector = ySpeed * Time.deltaTime;
+                transform.position += new Vector3(xVector, yVector, 0);
+            }
         }
-        xVector = xSpeed * Time.deltaTime;
-        yVector = ySpeed * Time.deltaTime;
-        transform.position += new Vector3(xVector, yVector, 0);
+        else
+        {
+            timer -= Time.deltaTime;
+            if (timer < 0)
+            {
+                timer = originalTimer;
+                xSpeed = -xSpeed;
+                ySpeed = -ySpeed;
+            }
+            xVector = xSpeed * Time.deltaTime;
+            yVector = ySpeed * Time.deltaTime;
+            transform.position += new Vector3(xVector, yVector, 0);
+        }
     }
 }

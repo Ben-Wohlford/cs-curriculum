@@ -34,5 +34,9 @@ public class TurretFireball : MonoBehaviour
             Destroy(this.gameObject);
             hud.health -= 3;
         }
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

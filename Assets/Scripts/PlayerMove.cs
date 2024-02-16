@@ -34,9 +34,9 @@ public class PlayerMove : MonoBehaviour
 
         if (inCave)
         {
-            jumpForce = 5.5f;
+            jumpForce = 8;
         }
-        xSpeed = 4;
+        xSpeed = 8;
     }
     
     // Update is called once per frame
