@@ -19,6 +19,9 @@ TagManager:
   - Key
   - MovingPlatform
   - Switch
+  - BossWall
+  - Boss
+  - BossProjectile
   layers:
   - Default
   - TransparentFX

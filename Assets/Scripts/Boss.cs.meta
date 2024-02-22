@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-guid: 3659799cff8424704a05c4a03194b295
+guid: b9570c6af25c5420d9c29c1ecc9ae76a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - bossWall: {fileID: 104970891613420269, guid: c314cb598180d447cb41c958e2011741,
+  - bossFireball: {fileID: 2642080659647288475, guid: 9183fedfb583f44fcba970c8ab10896f,
       type: 3}
-  - boss: {fileID: 6390582804446437462, guid: 93e905e0b42594e719d349f4b45bb999, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

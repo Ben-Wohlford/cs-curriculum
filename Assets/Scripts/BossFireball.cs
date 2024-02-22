@@ -1,6 +1,8 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-public class TurretFireball : MonoBehaviour
+
+public class BossFireball : MonoBehaviour
 {
     public UnityEngine.Vector3 target;
     private float timer;
@@ -11,12 +13,12 @@ public class TurretFireball : MonoBehaviour
     {
         hud = GameObject.FindObjectOfType<HUD>();
         player = GameObject.FindWithTag("Player");
-        timer = 5;
-        target = player.transform.position;
+        timer = 3;
     }
     // Update is called once per frame
     void Update()
     {
+        target = player.transform.position;
         timer -= Time.deltaTime;
         if (timer < 0 || transform.position == target)
         {
@@ -27,12 +29,13 @@ public class TurretFireball : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target, 0.01f);
         }
     }
-    void OnTriggerEnter2D(Collider2D other)
+
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(this.gameObject);
             hud.health -= 3;
         }
+        Destroy(this.gameObject);
     }
 }

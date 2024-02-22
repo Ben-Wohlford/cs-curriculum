@@ -31,7 +31,6 @@ public class Turret : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             target = other;
-            Debug.Log("targeting player");
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -40,7 +39,6 @@ public class Turret : MonoBehaviour
         {
             target = null;
             fireDelay = originalFireDelay;
-            Debug.Log("not targeting");
         }
     }
 }

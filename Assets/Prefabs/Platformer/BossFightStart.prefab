@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4552307025263925372}
   m_Layer: 2
   m_Name: BossFightStart
-  m_TagString: Untagged
+  m_TagString: BossWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,3 +90,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3659799cff8424704a05c4a03194b295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossWall: {fileID: 104970891613420269, guid: c314cb598180d447cb41c958e2011741, type: 3}
+  boss: {fileID: 6390582804446437462, guid: 93e905e0b42594e719d349f4b45bb999, type: 3}
