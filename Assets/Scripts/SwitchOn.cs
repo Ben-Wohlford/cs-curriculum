@@ -23,10 +23,12 @@ public class SwitchOn : MonoBehaviour
                 if (on)
                 {
                     on = false;
+                    Debug.Log("switch off");
                 }
                 if (!on)
                 {
                     on = true;
+                    Debug.Log("switch on");
                 }
             }
         }

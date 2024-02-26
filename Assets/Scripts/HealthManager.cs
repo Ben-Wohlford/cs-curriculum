@@ -1,7 +1,10 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class HealthManager : MonoBehaviour
 {
+    private Scene scene;
     private bool iFrames;
     private float timer;
     private float originaltimer;
@@ -17,6 +20,21 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (hud.health <= 0)
+        {
+            hud.health = 0;
+            scene = SceneManager.GetActiveScene();
+            if (scene.name == "Platformer")
+            {
+                SceneManager.LoadScene(sceneName: "Platformer");
+            }
+            else
+            {
+                SceneManager.LoadScene(sceneName: "Start");
+            }
+            Debug.Log("You died");
+            hud.health = 10;
+        }
         if (iFrames) 
         {
             timer -= Time.deltaTime;
@@ -35,7 +53,7 @@ public class HealthManager : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
-            ChangeHealth(3);
+            ChangeHealth(2);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

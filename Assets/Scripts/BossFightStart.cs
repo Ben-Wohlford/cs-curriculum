@@ -41,7 +41,6 @@ public class BossFightStart : MonoBehaviour
                 {
                     break;
                 }
-                Debug.Log(i);
             }
             GameObject[] gOs = GameObject.FindGameObjectsWithTag("BossWall");
             foreach (GameObject gO in gOs)

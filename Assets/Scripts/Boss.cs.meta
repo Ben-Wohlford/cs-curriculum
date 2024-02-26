@@ -4,6 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - lesserHealth: {fileID: 1754680589071845549, guid: 20d835637be124fa19ee5aba32b598de,
+      type: 3}
+  - greaterHealth: {fileID: 2097457319023854806, guid: e091de0f97e1a4e5a8b31fe26e17859f,
+      type: 3}
   - bossFireball: {fileID: 2642080659647288475, guid: 9183fedfb583f44fcba970c8ab10896f,
       type: 3}
   executionOrder: 0

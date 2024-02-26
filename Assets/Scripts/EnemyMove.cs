@@ -18,7 +18,7 @@ public class EnemyMove : MonoBehaviour
         target = player.transform.position;
         if (target != null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, 0.001f);
+            transform.position = Vector3.MoveTowards(transform.position, target, 0.0025f);
         }
     }
 }

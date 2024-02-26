@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerFireball : MonoBehaviour
 {
+    private Boss boss;
     private Vector3 target;
     private float timer;
     private GameObject[] enemies;

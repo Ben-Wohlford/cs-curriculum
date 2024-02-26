@@ -32,7 +32,7 @@ public class TurretFireball : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(this.gameObject);
-            hud.health -= 3;
+            hud.health -= 2;
         }
     }
 }

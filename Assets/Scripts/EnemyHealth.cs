@@ -33,7 +33,6 @@ public class EnemyHealth : MonoBehaviour
             {
                 //random drop between gold (2/7), normal health potion (2/7), nothing (2/7), and greater health potion (1/7)
                 float randomDrop = Random.Range(1, 8);
-                Debug.Log(randomDrop);
                 if (randomDrop == 1 || randomDrop == 2)
                 {
                     Instantiate(coin, transform.position, transform.rotation);

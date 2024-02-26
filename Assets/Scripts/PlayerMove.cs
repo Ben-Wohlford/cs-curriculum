@@ -29,14 +29,14 @@ public class PlayerMove : MonoBehaviour
         hasAxe = false;
         if (!inCave)
         {
-            ySpeed = 4;
+            ySpeed = 6;
         }
 
         if (inCave)
         {
             jumpForce = 8;
         }
-        xSpeed = 8;
+        xSpeed = 6;
     }
     
     // Update is called once per frame

@@ -26,16 +26,15 @@ public class BossFireball : MonoBehaviour
         }
         if (target != null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, 0.01f);
+            transform.position = Vector3.MoveTowards(transform.position, target, 0.005f);
         }
     }
-
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            hud.health -= 3;
+            Destroy(this.gameObject);
+            hud.health -= 2;
         }
-        Destroy(this.gameObject);
     }
 }
